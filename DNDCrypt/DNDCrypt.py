@@ -1,3 +1,10 @@
+"""
+Code Author: Ryan Gordon (DesyncRyan)
+Algorithm Author: specteral
+Description: An encoding algorithm created as a puzzle for a DnD campaign
+"""
+
+
 class Cipherer:
 
     primes = []
