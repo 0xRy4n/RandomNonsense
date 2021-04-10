@@ -23,7 +23,6 @@ class Cipherer:
         self.specialChars = sChars
         self.constructTable(tWidth, tHeight)
 
-        print(self.occMultiplier)
 
     def cipher(self):
         plainText = self.__getUserInput()
@@ -32,6 +31,7 @@ class Cipherer:
 
         print(cipherText)
         return(cipherText)
+
 
     # n is width, m is height
     def constructTable(self, n, m):
@@ -48,6 +48,7 @@ class Cipherer:
         except(AssertionError):
             print("Table dimensions exceeds 1000 primes. Reduce tWidth and tHeight")
 
+
     # Grabs plaintext from user, validates input as usable characters.
     def __getUserInput(self):
         userInput = input("What would you like to cipher? : ")
@@ -57,6 +58,7 @@ class Cipherer:
             print("Only letters and spaces can be ciphered. Please re-run and try again.")
         
         return(userInput)
+
 
     # Sums the values of cipherValues with spaces in order to replacee the spaces with encoded values
     def __sumWords(self, cipherInput):
@@ -72,6 +74,7 @@ class Cipherer:
         
         return(cipherOutput)
 
+
     # Adds periods between values
     def __formatCipherValues(self, cipherValues):
         formattedString = ""
@@ -79,6 +82,7 @@ class Cipherer:
             formattedString += str(value) + "."
 
         return(formattedString)
+
 
     # The encoding algorithm. See README. 
     def __encode(self, plainText):
@@ -93,7 +97,7 @@ class Cipherer:
 
             # If current character is not a special cace
             elif char not in self.specialChars:
-                if usedLetters.count(char) == len(self.primeTable) - 1: 
+                if usedLetters.count(char) == len(self.primeTable): 
                     usedLetters = [i for i in usedLetters if i != char] # If count reaches max value, reset to zero
                 occurrences = usedLetters.count(char)
                 cipherValues.append(self.primeTable[occurrences][self.colLabels.index(char)])
